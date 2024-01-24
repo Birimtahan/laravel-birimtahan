@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +17,10 @@ Route::group(['prefix' => 'auth', 'as' => 'api::auth.'], function () {
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('register', 'AuthController@register')->name('register');
 });
+
+Route::apiResource('exams', 'ExamController', ['as' => 'api::exams.', 'only' => ['index', 'show']]);
+Route::apiResource('exams', 'ExamController', [
+    'as' => 'api::exams.', 
+    'middleware' => ['auth:api', 'verified'] , 
+    'only' => ['store', 'update', 'destroy']
+]);

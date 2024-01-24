@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('item_options', function (Blueprint $table) {
             $table->id();
-            $table->integer('item_id');
+            $table->unsignedBigInteger('item_id');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('file')->nullable();
@@ -27,6 +27,8 @@ return new class extends Migration
                 ->on('exam_items')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+
+            $table->index('relative_order');
         });
     }
 

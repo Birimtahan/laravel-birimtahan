@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('exam_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('exam_id');
+            $table->unsignedBigInteger('exam_id');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('file')->nullable();
@@ -28,6 +28,8 @@ return new class extends Migration
                 ->on('exams')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+
+            $table->index('relative_order');
         });
     }
 

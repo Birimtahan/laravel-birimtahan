@@ -11,7 +11,7 @@ trait ApiResponser
      * @param $message
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function successResponse(array $data, string $message = null): JsonResponse
+    protected function successResponse(array $data = [], string $message = null): JsonResponse
     {
         return response()->json([
             'data' => $data,
