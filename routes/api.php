@@ -21,6 +21,12 @@ Route::group(['prefix' => 'auth', 'as' => 'api::auth.'], function () {
 Route::apiResource('exams', 'ExamController', ['as' => 'api::exams.', 'only' => ['index', 'show']]);
 Route::apiResource('exams', 'ExamController', [
     'as' => 'api::exams.', 
-    'middleware' => ['auth:api', 'verified'] , 
+    'middleware' => ['auth:api', 'verified'], 
+    'only' => ['store', 'update', 'destroy']
+]);
+
+Route::apiResource('sections', 'SectionController', [
+    'as' => 'api::sections.', 
+    'middleware' => ['auth:api', 'verified'], 
     'only' => ['store', 'update', 'destroy']
 ]);

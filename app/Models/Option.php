@@ -6,31 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ExamItem extends Model
+class Option extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'exam_items';
+    protected $table = 'options';
 
     protected $fillable = [
-        'exam_id',
+        'section_id',
         'title',
         'description',
         'file',
-        'type',
-        'correct_options',
+        'sector',
         'relative_order',
-    ];
-
-    protected $casts = [
-        'correct_options' => 'json'
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function exam()
+    public function section()
     {
-        return $this->belongsTo(Exam::class);
+        return $this->belongsTo(Section::class);
     }
 }

@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_options', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('exam_id');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('file')->nullable();
-            $table->string('section')->nullable();
+            $table->string('type');
+            $table->json('correct_options')->nullable();
             $table->integer('relative_order')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('item_id')
+            $table->foreign('exam_id')
                 ->references('id')
-                ->on('exam_items')
+                ->on('exams')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_options');
+        Schema::dropIfExists('sections');
     }
 };
