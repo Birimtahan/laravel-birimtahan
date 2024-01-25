@@ -21,7 +21,6 @@ return new class extends Migration
             $table->json('correct_options')->nullable();
             $table->integer('relative_order')->default(0);
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('exam_id')
                 ->references('id')

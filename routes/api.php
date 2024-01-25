@@ -30,3 +30,9 @@ Route::apiResource('sections', 'SectionController', [
     'middleware' => ['auth:api', 'verified'], 
     'only' => ['store', 'update', 'destroy']
 ]);
+
+Route::apiResource('options', 'OptionController', [
+    'as' => 'api::options.',
+    'middleware' => ['auth:api', 'verified'],
+    'only' => ['store', 'update', 'destroy']
+]);

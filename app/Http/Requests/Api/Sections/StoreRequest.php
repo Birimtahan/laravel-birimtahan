@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Sections;
 
 use App\Models\Exam;
 use App\Models\Section;
+use Illuminate\Validation\Rule;
 
 /**
  * Class StoreRequest
@@ -25,7 +26,14 @@ class StoreRequest extends AbstractRequest
     {
         return [
             'exam_id' => 'required|exists:exams,id',
-            'type' => 'required',
+            Rule::in([
+                Section::TYPE_HEADER,
+                Section::TYPE_PART,
+                Section::TYPE_SHORT_ANSWER,
+                Section::TYPE_MULTIPLE_CHOICE,
+                Section::TYPE_CHECKBOX,
+                Section::TYPE_CHECKBOX_GRID,
+            ])
         ];
     }
 

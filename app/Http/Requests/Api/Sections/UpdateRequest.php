@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests\Api\Sections;
 
+use App\Models\Section;
+use Illuminate\Validation\Rule;
+
 /**
  * Class UpdateRequest
  * @package App\Http\Requests\Api\Sections
@@ -18,7 +21,19 @@ class UpdateRequest extends AbstractRequest
         return [
             'title' => 'sometimes|nullable|string|max:255',
             'description' => 'sometimes|nullable|string|max:4000',
-            'type' => 'sometimes|nullable|string|max:255',
+            'type' => [
+                'sometimes', 
+                'nullable', 
+                'string', 
+                Rule::in([
+                    Section::TYPE_HEADER,
+                    Section::TYPE_PART,
+                    Section::TYPE_SHORT_ANSWER,
+                    Section::TYPE_MULTIPLE_CHOICE,
+                    Section::TYPE_CHECKBOX,
+                    Section::TYPE_CHECKBOX_GRID,
+                ])
+            ],
             'file' => 'sometimes|nullable|file',
             'correct_options' => 'sometimes|nullable|array',
             'relative_order' => 'sometimes|nullable|integer',

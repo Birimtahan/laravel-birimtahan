@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('sector')->nullable();
             $table->integer('relative_order')->default(0);
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('section_id')
                 ->references('id')

@@ -6,6 +6,7 @@ use App\Models\Exam;
 use App\Http\Requests\Api\Exams\UpdateRequest;
 use App\Http\Resources\ExamResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ExamController extends Controller
 {
@@ -32,6 +33,7 @@ class ExamController extends Controller
     public function update(UpdateRequest $request, Exam $exam)
     {
         $exam->fill($request->validated());
+        $exam->slug = Str::slug($request->title, '-');;
         $exam->save();
 
         return new ExamResource($exam);
