@@ -16,8 +16,7 @@ class UpdateRequest extends AbstractRequest
     public function rules(): array
     {
         return [
-            'title' => 'sometimes|nullable|string|max:255',
-            'description' => 'sometimes|nullable|string|max:4000',
+            'title' => 'sometimes|nullable|string|max:4000',
             'file' => 'sometimes|nullable|file',
             'sector' => 'sometimes|nullable|string',
             'relative_order' => 'sometimes|nullable|integer',

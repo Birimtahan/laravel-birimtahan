@@ -13,7 +13,8 @@ class ExamObserver
     public function created(Exam $exam): void
     {
         $exam->sections()->create([
-            'type' => Section::TYPE_PART
+            'type' => Section::TYPE_PART,
+            'is_default' => true
         ]);
     }
 }

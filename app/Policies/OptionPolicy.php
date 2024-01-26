@@ -29,6 +29,11 @@ class OptionPolicy
      */
     public function delete(User $user, Option $option): bool
     {
-        return $option->section->exam->user_id === $user->id;
+        $optionsCount = Option::where([
+            'section_id' => $option->section_id,
+            'sector' => $option->sector
+        ])->count();
+
+        return $option->section->exam->user_id === $user->id && $optionsCount > 1;
     }
 }

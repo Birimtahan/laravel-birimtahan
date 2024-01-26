@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('section_id');
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->text('title')->nullable();
             $table->string('file')->nullable();
             $table->string('sector')->nullable();
             $table->integer('relative_order')->default(0);

@@ -19,12 +19,11 @@ class UpdateRequest extends AbstractRequest
     public function rules(): array
     {
         return [
-            'title' => 'sometimes|nullable|string|max:255',
+            'title' => 'sometimes|nullable|string|max:4000',
             'description' => 'sometimes|nullable|string|max:4000',
             'type' => [
-                'sometimes', 
-                'nullable', 
-                'string', 
+                'sometimes',
+                'string',
                 Rule::in([
                     Section::TYPE_HEADER,
                     Section::TYPE_PART,

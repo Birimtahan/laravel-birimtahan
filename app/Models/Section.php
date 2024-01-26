@@ -28,6 +28,7 @@ class Section extends Model
         'type',
         'correct_options',
         'relative_order',
+        'is_default',
     ];
 
     protected $casts = [

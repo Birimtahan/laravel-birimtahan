@@ -26,14 +26,18 @@ class StoreRequest extends AbstractRequest
     {
         return [
             'exam_id' => 'required|exists:exams,id',
-            Rule::in([
-                Section::TYPE_HEADER,
-                Section::TYPE_PART,
-                Section::TYPE_SHORT_ANSWER,
-                Section::TYPE_MULTIPLE_CHOICE,
-                Section::TYPE_CHECKBOX,
-                Section::TYPE_CHECKBOX_GRID,
-            ])
+            'type' => [
+                'required',
+                'string', 
+                Rule::in([
+                    Section::TYPE_HEADER,
+                    Section::TYPE_PART,
+                    Section::TYPE_SHORT_ANSWER,
+                    Section::TYPE_MULTIPLE_CHOICE,
+                    Section::TYPE_CHECKBOX,
+                    Section::TYPE_CHECKBOX_GRID,
+                ])
+            ],
         ];
     }
 

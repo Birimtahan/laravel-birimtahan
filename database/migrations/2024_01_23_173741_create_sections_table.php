@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('exam_id');
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->text('description')->nullable();
             $table->string('file')->nullable();
             $table->string('type');
             $table->json('correct_options')->nullable();
+            $table->boolean('is_default')->default(0);
             $table->integer('relative_order')->default(0);
             $table->timestamps();
 

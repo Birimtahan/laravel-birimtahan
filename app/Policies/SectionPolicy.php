@@ -29,6 +29,6 @@ class SectionPolicy
      */
     public function delete(User $user, Section $section): bool
     {
-        return $section->exam->user_id === $user->id;
+        return $section->exam->user_id === $user->id && !$section->is_default;
     }
 }

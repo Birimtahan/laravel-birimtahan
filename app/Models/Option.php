@@ -14,7 +14,6 @@ class Option extends Model
     protected $fillable = [
         'section_id',
         'title',
-        'description',
         'file',
         'sector',
         'relative_order',
