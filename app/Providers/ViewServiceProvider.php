@@ -19,11 +19,11 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->addFrontNamespace();
+        $this->addEmailNamespace();
     }
 
-    private function addFrontNamespace(): void
+    private function addEmailNamespace(): void
     {
-        view()->addNamespace('front', resource_path('views/front'));
+        view()->addNamespace('email', resource_path('views/email'));
     }
 }
